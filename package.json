@@ -1,5 +1,5 @@
 {
-  "devDependencies": {
-    "@types/nodemailer": "^6.4.17"
+  "dependencies": {
+    "mailgen": "^2.0.29"
   }
 }
