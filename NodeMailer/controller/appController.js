@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const Mailgen = require("mailgen");
 
 const { EMAIL, PASSWORD } = require('../env');
+const { text } = require("express");
 
     /**Testing Account */
 const signup = async (req, res) => {
@@ -56,29 +57,29 @@ const getBill = (req, res) => {
     let mailGenerator = new Mailgen({
         theme: "default",
         product: {
-            name: "Mailgen",
-            link: "https://mailgen.js/",
+            name: "MENTCARE",
+            link: "https://MentCare.com/",
+            
         },
     });
     let response = {
         body: {
-            name:"kerem",
-            intro: "Your bill is ready.",
-            table: {
-                data: [
-                    {
-                        item: "Apple",
-                        description: "Fresh apples from the farm",
-                        price: "$2.00",
-                    },
-                    {
-                        item: "Banana",
-                        description: "Organic bananas",
-                        price: "$1.50",
-                    },
-                ],
-            },
-            outro: "Thank you for your business!",
+            name: "User",
+            intro: [
+                "Thank you for signing up! We're so glad to have you with us.",
+                "Your mental wellness journey starts now! Explore our features and resources to enhance your well-being.",
+                "If you have any questions or feedback, feel free to reach out. You're not alone—our AI chatbot is here to support your mental well-being every step of the way."
+              ],
+              
+            action: {
+                instructions: 'Start exploring your AI mental wellness companion here:',
+                button: {
+                  color: '#22BC66', // Optional styling
+                  text: 'Get Started',
+                  link: '', // Link to your app or dashboard
+                },
+              },
+            
         },
     };
 
@@ -86,7 +87,7 @@ const getBill = (req, res) => {
     let message = {
         from: EMAIL,
         to: userEmail,
-        subject: "Your Bill",
+        subject: "Welcome to MentCare!",
         html: mail,
     }
     
